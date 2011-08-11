@@ -15,6 +15,7 @@ namespace Jason
             } 
         }
         public Stack<JsonValue> stack = new Stack<JsonValue>();
+        private List<JsonException> errorlist = new List<JsonException>();
 
         public JsonValue Parse(string json_string)
         {
@@ -33,7 +34,14 @@ namespace Jason
                 current = lookahead;
             }
             ShiftReduce(current, null);
-            return stack.Pop();
+            JsonValue result =  stack.Pop();
+
+            if (errorlist.Count > 0)
+            {
+                throw new JsonException(this.errorlist);
+            }
+
+            return result;
         }
 
         bool Check()

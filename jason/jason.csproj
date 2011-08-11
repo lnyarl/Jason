@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Json.cs" />
     <Compile Include="JsonArray.cs" />
+    <Compile Include="JsonException.cs" />
     <Compile Include="JsonKeyValue.cs" />
     <Compile Include="JsonObject.cs" />
     <Compile Include="JsonToken.cs" />

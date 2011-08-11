@@ -16,7 +16,22 @@ namespace Jason.test
             testJson1();
             testJson2();
             testJson3();
+            testStringError();
             //testString();
+        }
+
+        private static void testStringError()
+        {
+            string json = File.ReadAllText("./test-stringerror.json");
+            Parser adf = new Parser();
+            try
+            {
+                JsonValue r = adf.Parse(json);
+            }
+            catch (JsonException e)
+            {
+                Debug.Assert(e.ErrorCode == "E101");
+            }
         }
 
         private static void testJson3()
